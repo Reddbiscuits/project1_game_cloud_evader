@@ -125,7 +125,7 @@ let player = new (function () {
     }
 
     if (this.posY < 0) {
-      this.posY = 0;
+      this.posY = ~~0;
     }
 
     if (this.posY + this.height > can.height) {
@@ -170,7 +170,7 @@ let player = new (function () {
   };
 })();
 
-player.setPosition(~~((width - player.width) / 2), ~~((height - player.height) / 2));
+player.setPosition(~~((width - player.width) / 2), Math.floor((height - player.height) / 2));
 
 let nrOflandings = 2;
 let arrayOfClouds = [];
@@ -246,7 +246,7 @@ let GameLoop = function () {
   player.updatePlayer();
   player.draw();
   player.boundaries();
-  // drawlandings();
+  
   arrayOfClouds.forEach(function (landing) {
     landing.y += cloudSpeed;
     landing.draw();
@@ -266,13 +266,9 @@ let GameLoop = function () {
   frameCounter += 1;
 
   checkCollision();
-  // backgroundMusic();
 
   gLoop = setTimeout(GameLoop, 1000 / 60);
 
-  // if (frameCounter % 1800 === 0) {
-  //   gLoop = setTimeout(GameLoop, (1000 / 60) * 2);
-  // }
 };
 
 function hitBottom() {
