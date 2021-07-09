@@ -210,6 +210,7 @@ let checkCollision = function () {
       // alert("contact !");
       cloud.onContact();
       GameOver();
+      reset();
     }
   });
 };
@@ -227,10 +228,18 @@ function GameOver() {
   ctx.fillStyle = "Black";
   ctx.font = "20pt Arial";
   ctx.drawImage(endGame, 200, 200, 400, 180);
-  ctx.fillText("YOUR SCORE: " + (frameCounter - 1), 250, 410);
+  ctx.fillText("YOUR SCORE: " + (frameCounter - 1), 300, 410);
   endSound = new sound("sounds/cartoon_fail.mp3");
   endSound.play();
 }
+
+function reset() {
+  if (GameOver) {
+    ctx.font = "12pt Arial";
+    ctx.fillText("Refresh screen to play again!", 300, 500);
+  }
+}
+setTimeout(reset, 2000);
 
 let cloudSpeed = 1;
 
@@ -246,7 +255,7 @@ let GameLoop = function () {
   player.updatePlayer();
   player.draw();
   player.boundaries();
-  
+
   arrayOfClouds.forEach(function (landing) {
     landing.y += cloudSpeed;
     landing.draw();
@@ -266,9 +275,9 @@ let GameLoop = function () {
   frameCounter += 1;
 
   checkCollision();
+  // reset();
 
   gLoop = setTimeout(GameLoop, 1000 / 60);
-
 };
 
 function hitBottom() {
