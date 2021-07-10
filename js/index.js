@@ -192,7 +192,7 @@ class Landing {
 
   draw() {
     ctx.drawImage(smCloud2, this.x, this.y);
-    ctx.strokeRect(this.x + 40, this.y, landingWidth - 40, landingHeight);
+    // ctx.strokeRect(this.x + 40, this.y, landingWidth - 40, landingHeight);
   }
 }
 
@@ -244,7 +244,6 @@ setTimeout(reset, 2000);
 let cloudSpeed = 1;
 
 let gameOverBool = false;
-
 let GameLoop = function () {
   if (gameOverBool) return;
 
@@ -314,14 +313,15 @@ document.onkeydown = function (event) {
       jetBlast.setCurrentTime(0);
       jetBlast.setVolume(0.5);
       jetBlast.play();
-
       break;
+
     case 39:
       player.flyingRight = true;
       jetBlast.setCurrentTime(0);
       jetBlast.setVolume(0.5);
       jetBlast.play();
       break;
+
     case 38:
       player.engineOn = true;
       jetBlast.setCurrentTime(0);
