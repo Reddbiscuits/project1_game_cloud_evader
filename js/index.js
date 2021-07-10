@@ -192,7 +192,7 @@ class Landing {
 
   draw() {
     ctx.drawImage(smCloud2, this.x, this.y);
-    // ctx.strokeRect(this.x + 40, this.y, landingWidth - 40, landingHeight);
+    ctx.strokeRect(this.x + 40, this.y, landingWidth - 40, landingHeight);
   }
 }
 
@@ -244,6 +244,7 @@ setTimeout(reset, 2000);
 let cloudSpeed = 1;
 
 let gameOverBool = false;
+
 let GameLoop = function () {
   if (gameOverBool) return;
 
